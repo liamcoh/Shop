@@ -1,0 +1,15 @@
+.flexBox {
+    display: flex;
+    justify-content: center;
+}
+
+.flexBox > p {
+    direction: rtl;
+    text-align: center;
+    text-decoration: underline;
+    text-underline-position: under;
+}
+
+.flexBox > img {
+    width: 30px;
+}
