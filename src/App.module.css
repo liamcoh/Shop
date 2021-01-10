@@ -1,3 +1,7 @@
+* {
+    direction: rtl;
+}
+
 .main {
     background-color: rgb(255,165,0);
     position:absolute;
@@ -5,8 +9,6 @@
     bottom:0;
     left:15%;
     right:15%;
-    /*overflow:hidden;
-    z-index:-1;*/
 }
 
 .hr { 

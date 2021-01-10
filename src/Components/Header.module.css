@@ -1,15 +1,99 @@
 .flexBox {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
-.flexBox > p {
+.title {
     direction: rtl;
     text-align: center;
     text-decoration: underline;
     text-underline-position: under;
 }
 
-.flexBox > img {
+.sumP {
+    direction: rtl;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 30px;
+}
+
+.logoImg {
     width: 30px;
 }
+
+.iconImg {
+    margin-top: 30px;
+    margin-bottom: 14px;
+    margin-left: 5px;
+    width: 20px;
+}
+
+.lineBreak {
+    height: 30px;
+    width: 100%;
+}
+
+.tableDiv {
+    height: 118px;
+    width: 800px;
+    overflow: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.tableDiv::-webkit-scrollbar {
+    display: none;
+}
+  
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+thead {
+    background-color: #F5F5F5
+}
+  
+thead th {
+    text-align: right;
+    font-weight: normal;
+    padding-right: 5px;
+    border-bottom: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+}
+  
+thead button {
+    border: 0;
+    border-radius: none;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 0.5em;
+    margin-bottom: 1px;
+    background-color: Transparent;
+}
+  
+thead button.ascending::after {
+    content: '👇';
+    display: inline-block;
+    margin-left: 1em;
+}
+  
+thead button.descending::after {
+    content: '☝️';
+    display: inline-block;
+    margin-left: 1em;
+}
+  
+tbody td {
+    text-align: right;
+    padding: 0.5em;
+    border-bottom: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+}
+  
+tbody tr:hover {
+    background-color: #eee;
+}
+  
