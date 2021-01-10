@@ -9,6 +9,7 @@
     bottom:0;
     left:15%;
     right:15%;
+    overflow: hidden;
 }
 
 .hr { 

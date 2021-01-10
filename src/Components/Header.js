@@ -2,14 +2,11 @@ import React from 'react';
 import headerStyles from './Header.module.css';
 import logo from '../Assets/logo.svg';
 import checkIcon from '../Assets/checkIcon.svg';
+import xIcon from '../Assets/xIcon.svg';
 
-function Header() {
+function Header({ rows }) {
 
   var sum = 0;
-  var rows = [
-    { category: 'פירות', name:'אבוקדו', number:3, price:5 },
-    { category: 'מוצרי חלב', name:'מילקי', number:6, price:4}
-  ];
 
   rows.forEach((row) => {
     row.totalPrice = row.price * row.number
@@ -122,7 +119,7 @@ function Header() {
       <div className={headerStyles.lineBreak}></div>
 
       {/*Total Sum*/}
-      <img className={headerStyles.iconImg} src={checkIcon} alt='checkIcon'></img>
+      <img className={headerStyles.iconImg} src={sum > 200 ? xIcon: checkIcon} alt='checkIcon'></img>
       <p className={headerStyles.sumP}>עלות כוללת: {sum}</p>
       
     </div>
