@@ -27,7 +27,7 @@
 }
 
 .lineBreak {
-    height: 30px;
+    height: 15px;
     width: 100%;
 }
 
@@ -63,12 +63,17 @@ thead th {
   
 thead button {
     border: 0;
+    width: 100%;
+    text-align: right;
     border-radius: none;
     font-family: inherit;
     font-size: inherit;
     padding: 0.5em;
+    padding-right: 0;
     margin-bottom: 1px;
     background-color: Transparent;
+    outline: none;
+    cursor: pointer;
 }
   
 thead button.ascending::after {

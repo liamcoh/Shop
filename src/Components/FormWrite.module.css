@@ -1,0 +1,33 @@
+.formDiv {
+    width: 50%;
+    box-sizing: border-box;
+    border-left: 1.5px solid black;
+}
+
+.formDiv * {
+    margin-right: 20px;
+    margin-bottom: 7px;
+    box-sizing: border-box;
+}
+
+.formDiv > form > label {
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+}
+
+.formDiv > form > input {
+    background-color: black;
+    color: white;
+}
+
+.formDiv > div > button {
+    margin-top: 10px;
+    background-color: deepskyblue;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    height: 40px;
+    width: 100px;
+    cursor: pointer;
+}

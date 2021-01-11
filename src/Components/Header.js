@@ -66,6 +66,13 @@ function Header({ rows }) {
       {/*Table*/}
       <div className={headerStyles.tableDiv}>
         <table>
+          <colgroup>
+          <col style={{ width:'20%' }}></col>
+          <col style={{ width:'20%' }}></col>
+          <col style={{ width:'20%' }}></col>
+          <col style={{ width:'20%' }}></col>
+          <col style={{ width:'20%' }}></col>
+          </colgroup>
           <thead>
             <tr>
               <th>

@@ -4,12 +4,11 @@
 
 .main {
     background-color: rgb(255,165,0);
-    position:absolute;
+    position: fixed;
     top:0;
     bottom:0;
     left:15%;
     right:15%;
-    overflow: hidden;
 }
 
 .hr { 
