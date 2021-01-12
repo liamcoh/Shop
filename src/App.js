@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import Header from './Components/Header'
 import Body from './Components/Body'
 import appStyles from './App.module.css';
+import MilkyImg from './Assets/Milky.png';
 const { max_items } = require("./config");
+
 
 function App() {
 
@@ -105,6 +107,12 @@ function App() {
       })
   }, [])
 
+  function addMilky() {
+    if(window.confirm('האם ברצונך להוסיף מיליקי שוקולד?')) {
+      addToList('מוצרי חלב', 'מילקי שוקולד', 1, 7);
+    }
+  }
+
 
   return (
     <div className={appStyles.main}>
@@ -122,6 +130,12 @@ function App() {
       priceWrite={[priceWrite, setPriceWrite]}
       numberSelect={[numberSelect, setNumberSelect]} 
       priceSelect={[priceSelect, setPriceSelect]} />
+
+      <div className={appStyles.rightCommercial} onClick={addMilky}>
+        <h1>מילקי שוקולד!</h1>
+        <p>יאמ</p>
+        <img className={appStyles.img} src={MilkyImg} alt='Milky'></img>
+      </div>
     </div>
   );
 }
