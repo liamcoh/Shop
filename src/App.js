@@ -69,12 +69,27 @@ function App() {
     
     fetch('http://localhost:3001/addItem', requestOptions)
       .then(response => {
-        if (response.status === 400) {
-          alert("קיים במערכת")
-          return;
+
+        var tmp;
+
+        if (response.status === 201) {
+          tmp = [...list]
+          let pervTotalPrice
+
+          tmp.forEach(ele => {
+            if(ele.category === category && ele.name === name) {
+              pervTotalPrice = parseInt(ele.number) * parseInt(ele.price)
+              ele.number = parseInt(number)
+              ele.price = parseInt(price)
+              ele.totalPrice = parseInt(ele.totalPrice) - pervTotalPrice + parseInt(price * number)
+            }
+          })
+
+          setSum(s => s - pervTotalPrice + (price * number))
+          setList(tmp)
         }
         else {
-          var tmp = [...list]
+          tmp = [...list]
 
           tmp.push({
             category: category,
