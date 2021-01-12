@@ -4,7 +4,7 @@ import FormWrite from './FormWrite.js';
 import FormSelect from './FormSelect.js';
 import plusIcon from '../Assets/plusIcon.svg';
 
-function Body({ setRows, category1, name1, category2 , name2 , number1, price1, number2, price2 }) {
+function Body({ addToList, categoryWrite, nameWrite, categorySelect , nameSelect , numberWrite, priceWrite, numberSelect, priceSelect }) {
 
 
   return (
@@ -13,11 +13,12 @@ function Body({ setRows, category1, name1, category2 , name2 , number1, price1, 
       {/*Title*/}
       <img className={BodyStyles.iconImg} src={plusIcon} alt='plusIcon'></img>
       <p className={BodyStyles.sumP}>הוסף מוצר חדש:</p>
+      
       <div className={BodyStyles.lineBreak}></div>
 
       {/*Body*/}
-      <FormWrite setRows={setRows} category={category1} name={name1} number={number1} price={price1}  />
-      <FormSelect setRows={setRows} category={category2} name={name2} number={number2} price={price2} />
+      <FormWrite addToList={addToList} category={categoryWrite} name={nameWrite} number={numberWrite} price={priceWrite}  />
+      <FormSelect addToList={addToList} category={categorySelect} name={nameSelect} number={numberSelect} price={priceSelect} />
       
     </div>
   );

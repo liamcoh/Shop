@@ -1,7 +1,7 @@
 import React from 'react';
 import FormSelectStyles from './FormSelect.module.css';
 
-function FormSelect({ side, setRows, category, name, number, price }) {
+function FormSelect({ addToList, category, name, number, price }) {
 
     const featuredCategories = ['מוצרי חלב', 'פירות', 'ירקות', 'חטיפים', 'ניקיון', 'אסטתיקה', 'שתייה', 'אלכוהול']
     const featuredItems = 
@@ -49,7 +49,7 @@ function FormSelect({ side, setRows, category, name, number, price }) {
             <div style={{ textAlign: 'center' }}>
                 <button 
                 type='button' 
-                onClick={() => setRows(category[0], name[0], number[0], price[0])}>
+                onClick={() => addToList(category[0], name[0], number[0], price[0])}>
                     הוסף מוצר!
                 </button>
                 </div>

@@ -4,14 +4,7 @@ import logo from '../Assets/logo.svg';
 import checkIcon from '../Assets/checkIcon.svg';
 import xIcon from '../Assets/xIcon.svg';
 
-function Header({ rows }) {
-
-  var sum = 0;
-
-  rows.forEach((row) => {
-    row.totalPrice = row.price * row.number
-    sum += row.totalPrice
-  })
+function Header({ list, sum }) {
 
   const useSortableData = (items, config = null) => {
     const [sortConfig, setSortConfig] = React.useState(config);
@@ -47,7 +40,7 @@ function Header({ rows }) {
     return { items: sortedItems, requestSort, sortConfig };
   };
 
-  const { items, requestSort, sortConfig } = useSortableData(rows);
+  const { items, requestSort, sortConfig } = useSortableData(list);
   const getClassNamesFor = (name) => {
     if (!sortConfig) {
       return;
@@ -55,12 +48,13 @@ function Header({ rows }) {
     return sortConfig.key === name ? sortConfig.direction : undefined;
   };
 
+
   return (
     <div className={headerStyles.flexBox}>
 
       {/*Title*/}
       <img className={headerStyles.logoImg} src={logo} alt='logo'></img>
-      <p className={headerStyles.title}>רשימת הקניות שלי ({rows.length})</p>
+      <p className={headerStyles.title}>רשימת הקניות שלי ({list.length})</p>
       <div className={headerStyles.lineBreak}></div>
 
       {/*Table*/}
@@ -112,7 +106,7 @@ function Header({ rows }) {
           </thead>
           <tbody>
             {items.map((item) => (
-              <tr key={item.id}>
+              <tr key={item.name}>
                 <td>{item.category}</td>
                 <td>{item.name}</td>
                 <td>{item.number}</td>
