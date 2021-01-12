@@ -2,17 +2,12 @@ import React, { useEffect, useState } from 'react';
 import Header from './Components/Header'
 import Body from './Components/Body'
 import appStyles from './App.module.css';
+const { max_items } = require("./config");
 
 function App() {
 
-  // Initial DB values
-  var DB = [
-    { category: 'פירות', name:'אבוקדו', number:3, price:5 },
-    { category: 'מוצרי חלב', name:'מילקי', number:6, price:4}
-  ];
-
   // States
-  const [list, setList] = useState(DB)
+  const [list, setList] = useState([])
   const [sum, setSum] = useState(0)
   const [categoryWrite, setCategoryWrite] = useState('הזן קטגוריה')
   const [nameWrite, setNameWrite] = useState('הזן שם מוצר')
@@ -25,6 +20,11 @@ function App() {
 
 
   function addToList(category, name, number, price) {
+
+    if (list.length === Number(max_items)) {
+      alert("מקסימום מוצרים")
+      return;
+    }
 
     // check if category and name contain only letters
     if (!/^[a-z][a-z\s]*$/.test(category) && !/^[א-ת][א-ת\s]*$/.test(category)) { 
@@ -48,26 +48,61 @@ function App() {
       return;
     }
 
-    var tmp = [...list]
-
-    tmp.push({
+    // Check with server if item exists.
+    var data = {
       category: category,
       name: name,
       number: number,
       price: price,
-      totalPrice: price * number
-    })
+      totalPrice: number * price
+    }
 
-    setSum(s => s + price * number)
-    setList(tmp)
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    };
+    
+    fetch('http://localhost:3001/addItem', requestOptions)
+      .then(response => {
+        if (response.status === 400) {
+          alert("קיים במערכת")
+          return;
+        }
+        else {
+          var tmp = [...list]
+
+          tmp.push({
+            category: category,
+            name: name,
+            number: number,
+            price: price,
+            totalPrice: price * number
+          })
+      
+          setSum(s => s + price * number)
+          setList(tmp)
+        }
+      })
   }
 
-  // Calculate total price column for each item.
-  useEffect(() => { 
-    list.forEach((row) => {
-      row.totalPrice = row.price * row.number
-      setSum(s => s + row.totalPrice)
-    })  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // Get DB from back Server
+  useEffect(() => {
+
+    const requestOptions = {
+      method: 'GET'
+    };
+
+    fetch('http://localhost:3001/getInitalList', requestOptions)
+      .then(response => response.json())
+      .then(data => {
+        setList(data.message)
+        data.message.forEach((row) => {
+          setSum(s => s + row.totalPrice)
+        })
+      })
   }, [])
 
 
