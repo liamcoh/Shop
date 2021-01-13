@@ -15,3 +15,21 @@
     border: 0; 
     border-top: 1.5px solid black;
 }
+
+.loading {
+    position: fixed;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+}
+
+.loading img {
+    width: 100px;
+}
+
+.loading h1 {
+    direction: ltr;
+    color: yellow;
+}

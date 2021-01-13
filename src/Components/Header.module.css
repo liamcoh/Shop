@@ -32,9 +32,9 @@
 }
 
 .tableDiv {
-    height: 118px;
+    /*height: 118px;*/
     width: 800px;
-    overflow: scroll;
+    /*overflow: scroll;*/
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
 }
