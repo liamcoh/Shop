@@ -1,7 +1,8 @@
 import React from 'react';
 import FormWriteStyles from './FormWrite.module.css';
+import * as utils from './utils.js';
 
-function FormWrite({ addToList, category, name, number, price }) {
+function FormWrite({ category, name, number, price, list, sum }) {
     
 
   return (
@@ -33,7 +34,7 @@ function FormWrite({ addToList, category, name, number, price }) {
         <div style={{ textAlign: 'center' }}>
             <button 
             type='button' 
-            onClick={() => addToList(category[0], name[0], number[0], price[0])}>
+            onClick={() => utils.addToList(category[0], name[0], number[0], price[0], list, sum)}>
                 הוסף מוצר!
             </button>
             </div>

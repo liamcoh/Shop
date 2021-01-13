@@ -4,5 +4,6 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 module.exports = {
-  max_items: process.env.REACT_APP_MAX_ITEMS
+  max_items: process.env.REACT_APP_MAX_ITEMS,
+  host_name: process.env.REACT_APP_BACK
 };

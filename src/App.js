@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Header from './Components/Header'
 import Body from './Components/Body'
+import Commercial from './Components/Commercial'
 import appStyles from './App.module.css';
-import MilkyImg from './Assets/Milky.png';
-const { max_items } = require("./config");
+const { host_name } = require("./config");
 
 
 function App() {
@@ -21,14 +21,14 @@ function App() {
   const [priceSelect, setPriceSelect] = useState('הזן מחיר ליחידה')
 
 
-  function addToList(category, name, number, price) {
+  /*function addToList(category, name, number, price) {
 
     if (list.length === Number(max_items)) {
       alert("מקסימום מוצרים")
       return;
     }
 
-    // check if category and name contain only letters
+    // check if category and name contain only letters a to z, A to Z, and א עד ת. allow spaces between words, no empty words.
     if (!/^[a-z][a-z\s]*$/.test(category) && !/^[א-ת][א-ת\s]*$/.test(category)) { 
       alert("קטגוריה שגויה")
       return;
@@ -39,7 +39,7 @@ function App() {
       return;
     }
 
-    // check if number and price contain only digits
+    // check if number and price contain only digits, no empty words.
     if (!/^\d+$/.test(number)) {
       alert("מספר שגוי")
       return;
@@ -67,7 +67,7 @@ function App() {
       body: JSON.stringify(data)
     };
     
-    fetch('http://localhost:3001/addItem', requestOptions)
+    fetch(host_name + 'addItem', requestOptions)
       .then(response => {
 
         var tmp;
@@ -103,7 +103,7 @@ function App() {
           setList(tmp)
         }
       })
-  }
+  }*/
 
   // Get DB from back Server
   useEffect(() => {
@@ -112,7 +112,8 @@ function App() {
       method: 'GET'
     };
 
-    fetch('http://localhost:3001/getInitalList', requestOptions)
+    /*setTimeout(() => {
+      fetch(host_name + 'getInitalList', requestOptions)
       .then(response => response.json())
       .then(data => {
         setList(data.message)
@@ -120,13 +121,17 @@ function App() {
           setSum(s => s + row.totalPrice)
         })
       })
-  }, [])
+    }, 1000 * 10)*/
 
-  function addMilky() {
-    if(window.confirm('האם ברצונך להוסיף מיליקי שוקולד?')) {
-      addToList('מוצרי חלב', 'מילקי שוקולד', 1, 7);
-    }
-  }
+    fetch(host_name + 'getInitalList', requestOptions)
+    .then(response => response.json())
+    .then(data => {
+      setList(data.message)
+      data.message.forEach((row) => {
+        setSum(s => s + row.totalPrice)
+      })
+    })
+  }, [])
 
 
   return (
@@ -136,7 +141,6 @@ function App() {
       <hr className={appStyles.hr}></hr>
 
       <Body 
-      addToList={addToList}
       categoryWrite={[categoryWrite, setCategoryWrite]} 
       nameWrite={[nameWrite, setNameWrite]}
       categorySelect={[categorySelect, setCategorySelect]} 
@@ -144,13 +148,13 @@ function App() {
       numberWrite={[numberWrite, setNumberWrite]} 
       priceWrite={[priceWrite, setPriceWrite]}
       numberSelect={[numberSelect, setNumberSelect]} 
-      priceSelect={[priceSelect, setPriceSelect]} />
+      priceSelect={[priceSelect, setPriceSelect]}
+      list={[list, setList]}
+      sum={[sum, setSum]} />
 
-      <div className={appStyles.rightCommercial} onClick={addMilky}>
-        <h1>מילקי שוקולד!</h1>
-        <p>יאמ</p>
-        <img className={appStyles.img} src={MilkyImg} alt='Milky'></img>
-      </div>
+      <Commercial 
+      list={[list, setList]}
+      sum={[sum, setSum]} />
     </div>
   );
 }

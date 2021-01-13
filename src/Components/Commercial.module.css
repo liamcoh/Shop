@@ -1,0 +1,15 @@
+.rightCommercial {
+    background-color: brown;
+    position: fixed;
+    top: 20%;
+    bottom: 20%;
+    left: 87%;
+    right: 2%;
+    text-align: center;
+    cursor: pointer;
+}
+
+.img {
+    margin: 5px;
+    width: 70%;
+}

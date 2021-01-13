@@ -4,7 +4,7 @@ import FormWrite from './FormWrite.js';
 import FormSelect from './FormSelect.js';
 import plusIcon from '../Assets/plusIcon.svg';
 
-function Body({ addToList, categoryWrite, nameWrite, categorySelect , nameSelect , numberWrite, priceWrite, numberSelect, priceSelect }) {
+function Body({ categoryWrite, nameWrite, categorySelect , nameSelect , numberWrite, priceWrite, numberSelect, priceSelect, list, sum }) {
 
 
   return (
@@ -17,8 +17,20 @@ function Body({ addToList, categoryWrite, nameWrite, categorySelect , nameSelect
       <div className={BodyStyles.lineBreak}></div>
 
       {/*Body*/}
-      <FormWrite addToList={addToList} category={categoryWrite} name={nameWrite} number={numberWrite} price={priceWrite}  />
-      <FormSelect addToList={addToList} category={categorySelect} name={nameSelect} number={numberSelect} price={priceSelect} />
+      <FormWrite 
+      category={categoryWrite} 
+      name={nameWrite} 
+      number={numberWrite} 
+      price={priceWrite}
+      list={list}
+      sum={sum}  />
+      <FormSelect 
+      category={categorySelect} 
+      name={nameSelect} 
+      number={numberSelect} 
+      price={priceSelect}
+      list={list}
+      sum={sum} />
       
     </div>
   );
